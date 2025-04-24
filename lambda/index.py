@@ -73,9 +73,12 @@ def lambda_handler(event, context):
 
         # FastAPIのエンドポイントを呼び出す
         # FastAPIのURLを取得
-        fastapi_url = os.environ.get("FASTAPI_URL")
+        fastapi_url = os.environ.get("FASTAPI_URL", "").rstrip('/')
+        endpoint_path = "generate"
+        endpoint_url = f"{fastapi_url}/{endpoint_path}"
+
         # FastAPIのエンドポイントにPOSTリクエストを送信
-        req = urllib.request.Request(fastapi_url, data=json.dumps(request_payload).encode('utf-8'), headers={'Content-Type': 'application/json'}, method='POST')
+        req = urllib.request.Request(endpoint_url, data=json.dumps(request_payload).encode('utf-8'), headers={'Content-Type': 'application/json'}, method='POST')
         # レスポンスを取得
         try:
             with urllib.request.urlopen(req) as response:
