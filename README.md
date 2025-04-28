@@ -1,3 +1,7 @@
+# AIE講座担当者様へ
+自作APIのURLはAWSコンソール上でLambdaの環境変数に登録しておき、index.pyからは環境変数を参照して取得するようになっていますのでご承知おきください。
+
+
 # Bedrock Chatbot with Cognito Authentication
 
 Amazon Bedrock を使用したチャットボットアプリケーションで、Amazon Cognito による認証機能を備えています。
